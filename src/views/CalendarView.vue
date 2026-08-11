@@ -54,8 +54,11 @@
       </Transition>
     </section>
 
-    <!-- Loading -->
-    <LoadingSpinner v-if="eventStore.loading" size="lg" class="py-10" />
+    <!-- Loading Skeletons -->
+    <div v-if="eventStore.loading" class="space-y-3">
+      <SkeletonCard class="h-[120px]" />
+      <SkeletonCard class="h-[120px]" />
+    </div>
 
     <!-- Event Form Modal -->
     <EventForm
@@ -75,7 +78,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import EventCard from '@/components/calendar/EventCard.vue'
 import EventForm from '@/components/calendar/EventForm.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
-import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 
 const eventStore = useEventStore()
 const toast = useToast()

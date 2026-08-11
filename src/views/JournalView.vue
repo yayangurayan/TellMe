@@ -81,8 +81,10 @@
       </div>
     </div>
 
-    <!-- Loading -->
-    <LoadingSpinner v-else-if="journalStore.loading" size="lg" class="py-20" />
+    <!-- Loading Skeletons -->
+    <div v-else-if="journalStore.loading" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <SkeletonCard v-for="i in 4" :key="i" class="h-[200px]" />
+    </div>
 
     <!-- Empty -->
     <EmptyState v-else icon="📝" title="Belum ada jurnal" message="Mulai tulis cerita dan perasaanmu hari ini!">
@@ -103,7 +105,7 @@ import { ref, onMounted } from 'vue'
 import { PenLine } from '@lucide/vue'
 import { useJournalStore } from '@/stores/journalStore'
 import { formatRelative } from '@/utils/dateFormatter'
-import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
 
 const journalStore = useJournalStore()

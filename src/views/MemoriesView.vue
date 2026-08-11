@@ -46,8 +46,11 @@
       </div>
     </div>
 
-    <!-- Loading -->
-    <LoadingSpinner v-else-if="memoryStore.loading" size="lg" class="py-20" />
+    <!-- Loading Skeletons -->
+    <div v-else-if="memoryStore.loading" class="space-y-8">
+      <SkeletonCard withImage class="max-w-md mx-auto h-[350px]" />
+      <SkeletonCard withImage class="max-w-md mx-auto h-[350px]" />
+    </div>
 
     <!-- Empty State -->
     <EmptyState
@@ -82,7 +85,7 @@ import { useMemoryStore } from '@/stores/memoryStore'
 import TimelineItem from '@/components/memories/TimelineItem.vue'
 import ImageViewer from '@/components/memories/ImageViewer.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
+import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
 
 const memoryStore = useMemoryStore()
