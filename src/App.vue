@@ -1,6 +1,6 @@
 <template>
   <div v-if="!authStore.loading">
-    <DefaultLayout v-if="authStore.isAuthenticated && $route.name !== 'login'" />
+    <DefaultLayout v-if="authStore.isAuthenticated && route.name !== 'login'" />
     <router-view v-else />
   </div>
   <div v-else class="min-h-screen flex items-center justify-center bg-surface">
@@ -15,12 +15,14 @@
 
 <script setup>
 import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 import { useTheme } from '@/composables/useTheme'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 const authStore = useAuthStore()
 const { initTheme } = useTheme()
+const route = useRoute()
 
 onMounted(async () => {
   initTheme()

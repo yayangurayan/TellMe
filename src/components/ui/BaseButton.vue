@@ -3,16 +3,17 @@
     :type="type"
     :disabled="disabled || loading"
     :class="[
-      'inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 cursor-pointer',
+      'inline-flex items-center justify-center gap-2 font-medium transition-all duration-300 cursor-pointer overflow-hidden relative',
       'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50',
       'disabled:opacity-50 disabled:cursor-not-allowed',
-      sizeClasses,
-      variantClasses,
+      sizeClasses[size] || sizeClasses.md,
+      variantClasses[variant] || variantClasses.primary,
     ]"
     @click="$emit('click', $event)"
   >
-    <LoadingSpinner v-if="loading" class="w-4 h-4" />
-    <slot />
+    <div v-if="variant === 'primary'" class="absolute inset-0 bg-white/20 translate-y-full hover:-translate-y-0 transition-transform duration-300 rounded-xl" />
+    <LoadingSpinner v-if="loading" class="w-4 h-4 relative z-10" />
+    <span class="relative z-10 flex items-center gap-2"><slot /></span>
   </button>
 </template>
 
@@ -47,33 +48,9 @@ const sizeClasses = {
 }
 
 const variantClasses = {
-  primary: 'bg-primary text-white hover:bg-primary-dark shadow-soft hover:shadow-medium active:scale-[0.98]',
+  primary: 'bg-gradient-to-r from-primary to-accent text-white shadow-soft hover:shadow-medium hover:scale-[1.02] active:scale-[0.98]',
   secondary: 'bg-card text-text border border-border hover:bg-surface-alt hover:border-primary/30 active:scale-[0.98]',
   ghost: 'text-text-muted hover:bg-surface-alt hover:text-text',
   danger: 'bg-danger text-white hover:bg-danger/90 active:scale-[0.98]',
-}
-</script>
-
-<script>
-export default {
-  computed: {
-    sizeClasses() {
-      const map = {
-        sm: 'px-3 py-1.5 text-sm rounded-lg',
-        md: 'px-5 py-2.5 text-sm rounded-xl',
-        lg: 'px-6 py-3 text-base rounded-xl',
-      }
-      return map[this.size] || map.md
-    },
-    variantClasses() {
-      const map = {
-        primary: 'bg-primary text-white hover:bg-primary-dark shadow-soft hover:shadow-medium active:scale-[0.98]',
-        secondary: 'bg-card text-text border border-border hover:bg-surface-alt hover:border-primary/30 active:scale-[0.98]',
-        ghost: 'text-text-muted hover:bg-surface-alt hover:text-text',
-        danger: 'bg-danger text-white hover:bg-danger/90 active:scale-[0.98]',
-      }
-      return map[this.variant] || map.primary
-    },
-  },
 }
 </script>

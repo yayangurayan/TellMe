@@ -9,7 +9,7 @@
 
     <!-- Login Card -->
     <div class="relative z-10 w-full max-w-md animate-slide-up">
-      <div class="bg-card rounded-3xl border border-border shadow-large p-8 sm:p-10">
+      <div class="glass bg-card/60 backdrop-blur-2xl rounded-3xl shadow-large p-8 sm:p-10">
         <!-- Logo -->
         <div class="flex flex-col items-center mb-8">
           <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow mb-4">

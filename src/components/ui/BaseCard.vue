@@ -1,8 +1,8 @@
 <template>
   <div
     :class="[
-      'rounded-2xl border border-border transition-all duration-300',
-      glass ? 'glass bg-card/80 backdrop-blur-xl' : 'bg-card',
+      'rounded-2xl transition-all duration-300',
+      glass ? 'glass' : 'bg-card border border-border',
       hoverable ? 'hover:shadow-medium hover:-translate-y-0.5 cursor-pointer' : 'shadow-soft',
       padding ? 'p-5' : '',
       className,

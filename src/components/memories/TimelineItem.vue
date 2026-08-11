@@ -66,14 +66,15 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { formatDate } from '@/utils/dateFormatter'
 
-defineProps({
+const props = defineProps({
   memory: { type: Object, required: true },
   index: { type: Number, default: 0 },
 })
 
 defineEmits(['view'])
 
-const isEven = false // We'll keep all items left-aligned for simplicity in v1
+const isEven = computed(() => props.index % 2 !== 0)
 </script>

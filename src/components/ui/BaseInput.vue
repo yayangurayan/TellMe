@@ -22,7 +22,7 @@
         :class="[
           'absolute left-4 top-1/2 -translate-y-1/2 text-text-muted transition-all duration-200 pointer-events-none text-sm',
           'peer-focus:top-3 peer-focus:text-xs peer-focus:text-primary',
-          'peer-not-placeholder-shown:top-3 peer-not-placeholder-shown:text-xs'
+          'peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:text-xs'
         ]"
       >
         {{ label }} <span v-if="required" class="text-danger">*</span>
